@@ -55,6 +55,9 @@ public class LocationPersistenceTests {
 		locs.forEach((location -> {
 			System.out.println(location.getState());
 		}));
+
+		Location loc = locationJpaRepository.findFirstByStateIgnoreCaseStartingWith("a");
+		assertEquals("Alabama", loc.getState());
 	}
 
 	@Test

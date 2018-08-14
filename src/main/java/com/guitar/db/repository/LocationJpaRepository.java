@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface LocationJpaRepository extends JpaRepository<Location, Long> {
     List<Location> findByStateIgnoreCaseStartingWith(String sateName);
+    Location findFirstByStateIgnoreCaseStartingWith(String sateName);
     List<Location> findByStateNotLikeOrderByStateAsc(String sateName);
     List<Location> findByStateIsOrCountryEquals(String value, String value2);
     List<Location> findByStateNot(String state);
