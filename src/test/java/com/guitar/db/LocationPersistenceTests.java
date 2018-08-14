@@ -69,4 +69,18 @@ public class LocationPersistenceTests {
 		List<Location> locations = locationJpaRepository.findAll();
 		assertNotNull(locations);
 	}
+
+	@Test
+	public void testJpaAnd(){
+		List<Location> locations = locationJpaRepository.findByStateAndCountry("Utah", "United States");
+		assertNotNull(locations);
+		assertEquals("Utah", locations.get(0).getState());
+	}
+
+	@Test
+	public void testJpaOr(){
+		List<Location> locations = locationJpaRepository.findByStateOrCountry("Utah", "Utah");
+		assertNotNull(locations);
+		assertEquals("Utah", locations.get(0).getState());
+	}
 }
